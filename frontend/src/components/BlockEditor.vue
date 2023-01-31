@@ -111,6 +111,8 @@ export default {
         };
     },
     created() {
+        // front end  :  props: ["args"] pass thourgh "this.args" =>
+        // python end : _from_client = _component_func(base_blocks
         this.loadSchemas = this.args.load_schema_names;
         // Register the plugins
         // The view plugin is used for rendering the nodes
@@ -126,7 +128,7 @@ export default {
 
         console.log(this.args);
         // Read the infos on the node passed in from Streamlit
-        // and register them.
+        // and register them. 
         this.args.base_blocks.forEach((el) => {
             const Block = BlockBuilder({
                 BlockName: el.name,
@@ -169,10 +171,11 @@ export default {
             // Streamlit via `Streamlit.setComponentValue`.
             Streamlit.setComponentValue({
                 command: "execute",
-                editor_state: this.editor.save(),
+                editor_state: this.editor.save(), // save() method for {Editor} object in "@baklavajs/core" 
             });
         },
         saveEditorData() {
+            // `Streamlit.setComponentValue`
             Streamlit.setComponentValue({
                 command: "save",
                 schema_name: this.saveSchemaName,

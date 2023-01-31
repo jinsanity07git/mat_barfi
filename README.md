@@ -2,6 +2,9 @@
 
 **A Python visual Flow Based Programming library that integrates into your existing workflow.**
 
+## build a streamlit component
+* [doc](https://docs.streamlit.io/library/components/components-api)
+
 ![Demo GIF](/docs/source/_static/demo.gif)
 
 **Documentation** : [find it here](https://barfi.readthedocs.io/en/latest/)

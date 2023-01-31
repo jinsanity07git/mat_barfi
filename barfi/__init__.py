@@ -11,10 +11,11 @@ import os
 
 _RELEASE = False
 
-# Declare a Streamlit component. `declare_component` returns a function
-# that is used to create instances of the component. We're naming this
-# function "_component_func", with an underscore prefix, because we don't want
-# to expose it directly to users. Instead, we will create a custom wrapper
+# Declare a Streamlit component. `declare_component` returns 
+# a function that is used to create instances of the component. 
+# We're naming this function "_component_func", with an underscore prefix, 
+# because we don't want to expose it directly to users. 
+# Instead, we will create a custom wrapper
 # function, below, that will serve as our component's public API.
 
 # It's worth noting that this call to `declare_component` is the
@@ -23,6 +24,7 @@ _RELEASE = False
 # best practice.
 
 if not _RELEASE:
+    ### call the client/index,html to serve as the componet
     _component_func = components.declare_component(
         "st_barfi",
         url="http://localhost:3001",
@@ -79,8 +81,11 @@ def st_barfi(base_blocks: Union[List[Block], Dict], load_schema: str = None, com
         raise TypeError(
             'Invalid type for base_blocks passed to the st_barfi component.')
 
-    _from_client = _component_func(base_blocks=base_blocks_data, load_editor_schema=editor_schema,
-                                   load_schema_names=schema_names_in_db, load_schema_name=load_schema, editor_setting=editor_setting,
+    _from_client = _component_func(base_blocks=base_blocks_data, 
+                                   load_editor_schema=editor_schema,
+                                   load_schema_names=schema_names_in_db, 
+                                   load_schema_name=load_schema, 
+                                   editor_setting=editor_setting,
                                    key=key, default={'command': 'skip', 'editor_state': {}})
 
     if _from_client['command'] == 'execute':
